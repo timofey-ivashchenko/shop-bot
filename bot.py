@@ -18,7 +18,7 @@ from telegram.ext import (
 )
 
 LANGS = {
-    "ru": "🇺🇦 Українська",
+    "ua": "🇺🇦 Українська",
     "en": "🇺🇸 English",
 }
 
@@ -45,6 +45,21 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await show_language_screen(chat_id, context)
 
 
+async def callback_handler(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+) -> None:
+    query = update.callback_query
+    await query.answer()
+
+    data = query.data
+    user = query.from_user
+    message = query.message
+    chat_id = message.chat_id
+
+    async def replace_screen(show_func, *args, **kwargs):
+        pass
+
+
 async def show_language_screen(
     chat_id: int, context: ContextTypes.DEFAULT_TYPE
 ) -> None:
@@ -63,10 +78,6 @@ async def show_language_screen(
         reply_markup=markup,
         text=text,
     )
-
-
-async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
-    pass
 
 
 if __name__ == "__main__":
