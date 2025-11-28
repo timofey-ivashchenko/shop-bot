@@ -111,6 +111,20 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -
 
         return
 
+    # Главный экран
+
+    if data == "main":
+
+        await replace_screen(
+            chat_id=chat_id,
+            context=context,
+            message_to_delete=message,
+            show_function=show_main_screen,
+            user_state=user_state,
+        )
+
+        return
+
     # Выбор категории товаров
 
     if data == "catalog":
