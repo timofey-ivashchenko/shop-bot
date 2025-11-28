@@ -32,25 +32,47 @@ from typing import (
 
 P = ParamSpec("P")
 
-LANGUAGES = {
-    "ua": "🇺🇦 Українська",
-    "en": "🇺🇸 English",
+LANGUAGES: dict[str, str] = {
+    "ua": "Українська",
+    "en": "English",
 }
 
 
 TEXTS: dict[str, dict[str, str]] = {
     "en": {
+        "back": "Back",
         "cart": "Cart",
         "catalog": "Catalog",
         "main_welcome": "Welcome to our shop!",
+        "pants": "Pants",
         "profile": "Profile",
+        "select_product_category": "Select product category",
+        "socks": "Socks",
+        "t-shirts": "T-shirts",
     },
     "ua": {
+        "back": "Назад",
         "cart": "Кошик",
         "catalog": "Каталог",
         "main_welcome": "Ласкаво просимо до нашого магазину!",
+        "pants": "Штани",
         "profile": "Профіль",
+        "select_product_category": "Виберіть категорію товарів",
+        "socks": "Шкарпетки",
+        "t-shirts": "Футболки",
     },
+}
+
+ICONS: dict[str, str] = {
+    "back": "⬅️",
+    "cart": "🛒",
+    "catalog": "🛍️",
+    "en": "🇺🇸",
+    "pants": "👖",
+    "profile": "👤",
+    "socks": "🧦",
+    "t-shirts": "👕",
+    "ua": "🇺🇦",
 }
 
 logger: Optional[Logger] = None
@@ -84,6 +106,20 @@ async def callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -
             context=context,
             message_to_delete=message,
             show_function=show_main_screen,
+            user_state=user_state,
+        )
+
+        return
+
+    # Выбор категории товаров
+
+    if data == "catalog":
+
+        await replace_screen(
+            chat_id=chat_id,
+            context=context,
+            message_to_delete=message,
+            show_function=show_product_category_screen,
             user_state=user_state,
         )
 
@@ -142,13 +178,17 @@ async def replace_screen(
 
 async def show_language_screen(chat_id: int, context: ContextTypes.DEFAULT_TYPE) -> None:
 
-    text = "Оберіть мову | Choose language"
+    text = "Оберіть мову | Select language"
 
     buttons: list[InlineKeyboardButton] = []
 
     for code, title in LANGUAGES.items():
+        icon = ICONS[code]
+        caption = f"{icon} {title}"
         data = f"language_{code}"
-        button = InlineKeyboardButton(text=title, callback_data=data)
+        button = InlineKeyboardButton(
+            text=caption,
+            callback_data=data)
         buttons.append(button)
 
     reply_markup = InlineKeyboardMarkup(inline_keyboard=[buttons])
@@ -174,13 +214,13 @@ async def show_main_screen(
 
     reply_markup = InlineKeyboardMarkup([[
         InlineKeyboardButton(
-            text=f"🛍️ {texts["catalog"]}",
+            text=f"{ICONS["catalog"]} {texts["catalog"]}",
             callback_data="catalog"),
         InlineKeyboardButton(
-            text=f"🛒 {texts["cart"]}",
+            text=f"{ICONS["cart"]} {texts["cart"]}",
             callback_data="cart"),
         InlineKeyboardButton(
-            text=f"👤 {texts["profile"]}",
+            text=f"{ICONS["profile"]} {texts["profile"]}",
             callback_data="profile"),
     ]])
 
@@ -192,6 +232,43 @@ async def show_main_screen(
     )
 
 
+async def show_product_category_screen(
+    chat_id: int,
+    context: ContextTypes.DEFAULT_TYPE,
+    user_state: dict[str, Any]
+) -> None:
+
+    language = user_state["language"]
+    texts = TEXTS[language]
+
+    text = texts["select_product_category"]
+
+    button_data: dict[str, tuple[str, str]] = dict(sorted({
+        texts["t-shirts"]: (ICONS["t-shirts"], "catalog_t-shirts"),
+        texts["pants"]: (ICONS["pants"], "catalog_pants"),
+        texts["socks"]: (ICONS["socks"], "catalog_socks"),
+    }.items()))
+
+    buttons: list[list[InlineKeyboardButton]] = []
+
+    for title, data in button_data.items():
+        buttons.append([InlineKeyboardButton(
+            text=f"{data[0]} {title}",
+            callback_data=data[1])])
+
+    buttons.append([InlineKeyboardButton(
+        text=f"{ICONS["back"]} {texts["back"]}",
+        callback_data="main")])
+
+    reply_markup = InlineKeyboardMarkup(inline_keyboard=buttons)
+
+    await context.bot.send_message(
+        chat_id=chat_id,
+        reply_markup=reply_markup,
+        text=text,
+    )
+
+
 async def start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
 
     user_id = update.effective_user.id
@@ -199,7 +276,6 @@ async def start_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> N
 
     chat_id = update.effective_chat.id
     await show_language_screen(chat_id, context)
-
 
 if __name__ == "__main__":
     main()
