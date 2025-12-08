@@ -95,6 +95,24 @@ PRODUCTS = {
                 "price": 75,
                 "stock": 31,
             },
+            {
+                "description": {
+                    "en": "This wardrobe essential T-shirt is made from pure cotton jersey with branded embroidery and cut to a figure-forming slim fit.",
+                    "ua": "Ця незамінна футболка виготовлена ​​з чистого бавовняного трикотажу з фірмовою вишивкою та має приталений крой, що фіксує фігуру.",
+                },
+                "id": 614,
+                "name": {
+                    "en": "Logo Embroidery Jersey Slim T-Shirt",
+                    "ua": "Футболка з вишивкою логотипу з джерсі",
+                },
+                "photos": [
+                    "images/catalog/t-shirts/tommy-hilfiger-1.png",
+                    "images/catalog/t-shirts/tommy-hilfiger-2.png",
+                    "images/catalog/t-shirts/tommy-hilfiger-3.png",
+                ],
+                "price": 49.90,
+                "stock": 70,
+            },
         ],
     },
 }
