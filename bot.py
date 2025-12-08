@@ -37,7 +37,7 @@ ICONS: dict[str, str] = {
     "en": "🇺🇸",
     "gallery": "🖼️",
     "left": "◀️",
-    "pants": "👖",
+    "jeans": "👖",
     "profile": "👤",
     "right": "▶️",
     "socks": "🧦",
@@ -115,6 +115,130 @@ PRODUCTS = {
             },
         ],
     },
+    "socks": {
+        "names": {
+            "en": "Socks",
+            "ua": "Шкарпетки",
+        },
+        "items": [
+            {
+                "id": 902,
+                "name": {
+                    "en": "Diesel Streetwear Logo Socks",
+                    "ua": "Вуличні шкарпетки Diesel з логотипом",
+                },
+                "description": {
+                    "en": "Bold Diesel socks inspired by modern streetwear aesthetics. The breathable knit and reinforced heel ensure durability and everyday practicality.",
+                    "ua": "Стильні шкарпетки Diesel, натхненні сучасною вуличною модою. Дихаюче плетіння та посилена п’ята забезпечують довговічність і комфорт щодня.",
+                },
+                "photos": [
+                    "images/catalog/socks/diesel-1.png",
+                    "images/catalog/socks/diesel-2.png",
+                    "images/catalog/socks/diesel-3.png",
+                ],
+                "price": 24.50,
+                "stock": 95,
+            },
+            {
+                "id": 901,
+                "name": {
+                    "en": "Calvin Klein Essential Cotton Socks",
+                    "ua": "Бавовняні шкарпетки Calvin Klein Essential",
+                },
+                "description": {
+                    "en": "Soft cotton socks from Calvin Klein designed for all-day comfort. Minimalist styling with subtle logo embroidery makes them easy to pair with any wardrobe.",
+                    "ua": "М'які бавовняні шкарпетки від Calvin Klein, створені для комфорту протягом усього дня. Мінімалістичний дизайн із фірмовою вишивкою логотипу легко поєднується з будь-яким гардеробом.",
+                },
+                "photos": [
+                    "images/catalog/socks/calvin-klein-1.png",
+                    "images/catalog/socks/calvin-klein-2.png",
+                    "images/catalog/socks/calvin-klein-3.png",
+                ],
+                "price": 19.90,
+                "stock": 120,
+            },
+            {
+                "id": 903,
+                "name": {
+                    "en": "Pierre Cardin Premium Classic Socks",
+                    "ua": "Преміальні класичні шкарпетки Pierre Cardin",
+                },
+                "description": {
+                    "en": "Elegant socks from Pierre Cardin crafted from high-quality cotton blend. Comfortable stretch and refined minimalism for a timeless wardrobe.",
+                    "ua": "Елегантні шкарпетки Pierre Cardin, виготовлені з якісної бавовняної суміші. Комфортна еластичність і витончений мінімалізм для гардеробу поза часом.",
+                },
+                "photos": [
+                    "images/catalog/socks/pierre-cardin-1.png",
+                    "images/catalog/socks/pierre-cardin-2.png",
+                    "images/catalog/socks/pierre-cardin-3.png",
+                ],
+                "price": 22.00,
+                "stock": 150,
+            },
+        ],
+    },
+    "jeans": {
+        "names": {
+            "en": "Jeans",
+            "ua": "Джинси",
+        },
+        "items": [
+            {
+                "id": 953,
+                "name": {
+                    "en": "Dolce & Gabbana Classic Blue Jeans",
+                    "ua": "Класичні сині джинси Dolce & Gabbana",
+                },
+                "description": {
+                    "en": "Timeless Dolce & Gabbana denim in a universal straight silhouette. Premium fabric and iconic Italian craftsmanship elevate everyday wear.",
+                    "ua": "Позачасові джинси Dolce & Gabbana у класичному прямому силуеті. Преміальна тканина та італійська майстерність додають вишуканості буденному образу.",
+                },
+                "photos": [
+                    "images/catalog/jeans/dolce-gabbana-1.png",
+                    "images/catalog/jeans/dolce-gabbana-2.png",
+                    "images/catalog/jeans/dolce-gabbana-3.png",
+                ],
+                "price": 240.00,
+                "stock": 28,
+            },
+            {
+                "id": 951,
+                "name": {
+                    "en": "Calvin Klein Modern Slim Jeans",
+                    "ua": "Джинси Calvin Klein Modern Slim",
+                },
+                "description": {
+                    "en": "Slim-fit denim by Calvin Klein crafted with premium cotton and a refined wash. A versatile piece designed for a clean, contemporary silhouette.",
+                    "ua": "Джинси приталеного крою від Calvin Klein, виготовлені з преміальної бавовни та доповнені витонченим відтінком деніму. Багатофункціональна модель для сучасного, охайного силуету.",
+                },
+                "photos": [
+                    "images/catalog/jeans/calvin-klein-1.png",
+                    "images/catalog/jeans/calvin-klein-2.png",
+                    "images/catalog/jeans/calvin-klein-3.png",
+                ],
+                "price": 155,
+                "stock": 42,
+            },
+            {
+                "id": 952,
+                "name": {
+                    "en": "Diesel D-Vision Straight Jeans",
+                    "ua": "Diesel D-Vision прямі джинси",
+                },
+                "description": {
+                    "en": "Authentic Diesel denim with a straight-cut profile. Rugged texture and signature detailing create a bold everyday statement.",
+                    "ua": "Фірмовий денім Diesel із прямим кроєм. Щільна текстура та характерні деталі створюють виразний повсякденний стиль.",
+                },
+                "photos": [
+                    "images/catalog/jeans/diesel-1.png",
+                    "images/catalog/jeans/diesel-2.png",
+                    "images/catalog/jeans/diesel-3.png",
+                ],
+                "price": 189.00,
+                "stock": 36,
+            },
+        ],
+    },
 }
 
 TEXTS: dict[str, dict[str, str]] = {
@@ -125,7 +249,7 @@ TEXTS: dict[str, dict[str, str]] = {
         "catalog": "Catalog",
         "main_welcome": "Welcome to our shop!",
         "next": "Next",
-        "pants": "Pants",
+        "jeans": "Jeans",
         "previous": "Previous",
         "price": "Price",
         "product_caption": "{icon} Products in the <b>{category}</b> category · Page {page}/{pages}",
@@ -142,7 +266,7 @@ TEXTS: dict[str, dict[str, str]] = {
         "catalog": "Каталог",
         "main_welcome": "Ласкаво просимо до нашого магазину!",
         "next": "Наступне",
-        "pants": "Штани",
+        "jeans": "Джинси",
         "previous": "Попереднє",
         "price": "Ціна",
         "product_caption": "{icon} Товари в категорії <b>{category}</b> · Сторінка {page}/{pages}",
@@ -357,7 +481,7 @@ async def show_product_category_screen(update: Update, context: ContextTypes.DEF
 
     button_data: dict[str, tuple[str, str]] = dict(sorted({
         texts["t-shirts"]: (ICONS["t-shirts"], "catalog:t-shirts"),
-        texts["pants"]: (ICONS["pants"], "catalog:pants"),
+        texts["jeans"]: (ICONS["jeans"], "catalog:jeans"),
         texts["socks"]: (ICONS["socks"], "catalog:socks"),
     }.items()))
 
